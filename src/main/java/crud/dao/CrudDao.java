@@ -18,11 +18,13 @@ public class CrudDao {
 	
 	@Autowired
 	EntityManager manager;
-	
+//	SAVE DATA
 	public void saveEmployee(Employee employee) {
+		System.out.println("saveEmployee is start");
 		manager.getTransaction().begin();
 		manager.persist(employee);
 		manager.getTransaction().commit();
+		System.out.println("save employee is start");
 	}
 //	FETCH DATA
 	public List<Employee> fetchData() {
@@ -39,9 +41,15 @@ public class CrudDao {
 	}
 	
 //	UPDATE DATA
-	public void editEmp(Employee editemp) {
+	public void updateEmp(Employee employee) {
+//		System.out.println("updateemp is start");
 		manager.getTransaction().begin();
-		manager.merge(editemp);
-		manager.getTransaction().commit();
+		if (employee.getId() <= 0) {
+			System.out.println("this id : "+employee.getId());
+	        throw new IllegalArgumentException("Employee ID cannot be null or negative");
+	    }
+		manager.merge(employee);
+//		manager.getTransaction().commit();
+		System.out.println("updateemp is end");
 	}
 }

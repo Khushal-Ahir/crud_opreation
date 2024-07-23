@@ -39,9 +39,11 @@
 			<td>${i.email}</td>
 			<td>${i.sal}</td>
 			<td><a href="deleteEmp?id=${i.id}"><button>Delete</button></a></td>
-			<td><a href="edit?id=${i.id}"><button>Edit</button></a></td>
+			<td><a href="update?id=${i.id}"><button>Edit</button></a></td>
 		</tr>
 		</c:forEach>
 	</table>
+	
+	<a href="/Crud_Operation"><button>Home</button></a>
 </body>
 </html>
